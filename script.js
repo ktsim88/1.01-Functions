@@ -12,19 +12,15 @@ function render (html) {
 */
 function greet () {
   // TODO: Write your code here
+  const name = prompt("What is your actual name?");
+  if (!name) {
+    render("<div> Do you not have a name?!?!?!?!?!?!?!</div>");
+    return;
+  } else {
+    render(`<div>Hello, ${name}! Nice to meet you!</div>`);
+  }
 }
 
-/* 
-  Function 2 — averageNumbers()
-  ------------------------------
-  - Prompt the user for a list of numbers separated by commas
-  - Split the input into an array, turn into numbers
-  - Calculate the average
-  - Display the average AND the list of numbers
-*/
-function averageNumbers () {
-  // TODO: Write your code here
-}
 
 /* 
   Function 3 — timeOfDay()
@@ -35,6 +31,16 @@ function averageNumbers () {
 */
 function timeOfDay () {
   // TODO: Write your code here
+  const h = new Date().getHours();
+  let msg = '';
+  if (h < 12) {
+    msg = 'Good Morning!';
+  } else if (h < 18 && h > 12) {
+    msg = 'Good Afternoon!';
+  } else {
+    msg = 'Good Evening';
+  }
+  render(`<div>${msg}</div>`)
 }
 
 /* 
@@ -47,6 +53,20 @@ function timeOfDay () {
 */
 function randomBetween () {
   // TODO: Write your code here
+  const min = parseInt(prompt("Enter a minimum number"));
+  const max = parseInt(prompt("Enter a maximum number"));
+  if (isNaN(min) || isNaN(max)) {
+    render(`<div>Please use actual numbers.</div>`);
+    return;
+  } if (min >= max) {
+    render(`<div>Please make sure minimum is less than maximum</div>`);
+    return;
+  }
+  const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
+  render(randomNumber);
+
+
+
 }
 
 /* 
@@ -57,14 +77,19 @@ function randomBetween () {
 */
 function clearOutput () {
   // TODO: Write your code here
+  render("Output Cleared.")
 }
 
 // ---- Event listeners for the demo buttons ----
 document.getElementById('btnGreet').addEventListener('click', greet)
-document.getElementById('btnAvg').addEventListener('click', averageNumbers)
+// document.getElementById('btnAvg').addEventListener('click', averageNumbers)
 document.getElementById('btnTime').addEventListener('click', timeOfDay)
 document.getElementById('btnRandom').addEventListener('click', randomBetween)
 document.getElementById('btnClear').addEventListener('click', clearOutput)
+document.getElementById('btnTitle').addEventListener('click', changeTitle)
+document.getElementById('btnOutputText').addEventListener('click', changeOutputTextColor)
+document.getElementById('btnBGColor').addEventListener('click', changeBGColor)
+document.getElementById('btnDouble').addEventListener('click', doubleNumber)
 
 /* 
   ------------------------------------------
@@ -80,3 +105,21 @@ document.getElementById('btnClear').addEventListener('click', clearOutput)
   Write each function below, and don’t forget to connect each one 
   to a new button in index.html using addEventListener.
 */
+
+// changes page title
+function changeTitle() {
+  const title = prompt("What do you want to change the title to?");
+  document.getElementById("title").innerHTML = ' ';
+  document.getElementById("title").innerHTML = title;
+
+}
+function changeOutputTextColor() {
+
+}
+function changeBGColor() {
+
+}
+
+function doubleNumber() {
+  
+}
