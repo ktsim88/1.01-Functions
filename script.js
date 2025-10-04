@@ -35,7 +35,7 @@ function timeOfDay () {
   let msg = '';
   if (h < 12) {
     msg = 'Good Morning!';
-  } else if (h < 18 && h > 12) {
+  } else if (h < 18 && h >= 12) {
     msg = 'Good Afternoon!';
   } else {
     msg = 'Good Evening';
@@ -109,12 +109,18 @@ document.getElementById('btnDouble').addEventListener('click', doubleNumber)
 // changes page title
 function changeTitle() {
   const title = prompt("What do you want to change the title to?");
-  document.getElementById("title").innerHTML = ' ';
-  document.getElementById("title").innerHTML = title;
+  if (!title) {
+    render("<div>Please type something here</div>");
+    return;
+  } else {
+    document.getElementById("title").innerHTML = title;
+  }
+  
 
 }
 function changeOutputTextColor() {
-
+  const colors = ["red", "orange", "yelow", "green", "blue", "purple"];
+  
 }
 function changeBGColor() {
 
